@@ -1,10 +1,11 @@
-from flask import Flask, jsonify, request, redirect, url_for
+from flask import Flask, jsonify, request, render_template, url_for
 import useModel
 import os
 
 app = Flask(__name__)
 
 saveString = []
+saveResults = []
 
 @app.route("/")
 def hello_world():
@@ -12,15 +13,18 @@ def hello_world():
 
 @app.route('/processTest')
 def get_incomes():
-    return jsonify(saveString)
+    return render_template("process-result.html",description = saveResults)
 
 @app.route('/process', methods=['POST'])
 def add_income():
     saveString.clear()
+    saveResults.clear()
     print(request.get_json())
     image=request.get_json()["name"]
     print(image)
-    saveString.append(useModel.useModelFromBase64(image))
+    predict,result=useModel.useModelFromBase64(image)
+    saveString.append(predict)
+    saveResults.append(result)
     return jsonify(saveString[0]),200
 
 

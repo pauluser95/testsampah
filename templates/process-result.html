@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image with Description</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .image-container {
+            max-width: 400px;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            min-width: 400px;
+        }
+        .image-description {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="image-container">
+    <img src="static/results_image0.jpg" alt="Descriptive Alt Text">
+    <div class="image-description">{{ description }}</div>
+</div>
+
+</body>
+</html>

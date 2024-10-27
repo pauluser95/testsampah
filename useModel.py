@@ -11,11 +11,11 @@ def useModelFromBase64 (string64):
     input_image = 'imageToPredict.png'
     image = cv2.imread(input_image)
     results = model(image)[0]
-    results.save()
+    results.save("static/results_image0.jpg")
     print(results.tojson(normalize=False))
     name=json.loads(results.tojson(normalize=False))
     try:
         print(name[0]["name"])
-        return name[0]["name"]
+        return name[0]["name"],name
     except:
         return "no detection"
