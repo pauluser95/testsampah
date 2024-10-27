@@ -18,4 +18,4 @@ def useModelFromBase64 (string64):
         print(name[0]["name"])
         return name[0]["name"],name
     except:
-        return "no detection"
+        return "no detection","no detection"
