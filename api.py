@@ -19,9 +19,8 @@ def get_incomes():
 def add_income():
     saveString.clear()
     saveResults.clear()
-    print(request.get_json())
+    print(request)
     image=request.get_json()["name"]
-    print(image)
     predict,result=useModel.useModelFromBase64(image)
     saveString.append(predict)
     saveResults.append(result)
