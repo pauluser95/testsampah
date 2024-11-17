@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request, render_template, url_for
 import useModel
 import os
+import urllib.parse
+import base64
 
 app = Flask(__name__)
 
@@ -19,8 +21,8 @@ def get_incomes():
 def add_income():
     saveString.clear()
     saveResults.clear()
-    print(request)
     image=request.get_json()["name"]
+    image = image + '=' * (4 - len(image) % 4)
     predict,result=useModel.useModelFromBase64(image)
     saveString.append(predict)
     saveResults.append(result)
