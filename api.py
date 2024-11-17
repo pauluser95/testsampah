@@ -22,7 +22,9 @@ def add_income():
     saveString.clear()
     saveResults.clear()
     image=request.get_json()["name"]
-    image = image + '=' * (4 - len(image) % 4)
+    image = urllib.parse.unquote(image)
+    image = image + "=" * ((4 - len(image) % 4) % 4)
+    print(image)
     predict,result=useModel.useModelFromBase64(image)
     saveString.append(predict)
     saveResults.append(result)
