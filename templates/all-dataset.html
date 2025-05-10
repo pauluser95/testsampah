@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 40px;
+      text-align: center;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .gallery img {
+      max-width: 300px;
+      height: auto;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+<a href="{{ url_for('download_all') }}" class="download-button">Download All Images</a>
+  <h1>Image Gallery</h1>
+  <div class="gallery">
+    {% for img in images %}
+      <img src="{{ url_for('static', filename=img) }}" alt="Gallery image">
+    {% endfor %}
+  </div>
+
+</body>
+</html>
